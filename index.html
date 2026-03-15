@@ -24,9 +24,10 @@
             --text-main: #0f172a;
             --glass: rgba(255, 255, 255, 0.8);
             --border-glass: rgba(15, 23, 42, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.4s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.4s, color 0.4s; }
 
         body {
             background: var(--bg-dark);
@@ -37,6 +38,7 @@
             overflow-x: hidden;
         }
 
+        /* --- POZADÍ --- */
         .bg-animate {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background: radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
@@ -47,12 +49,13 @@
 
         .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; width: 100%; z-index: 1; }
 
+        /* --- LOGO --- */
         header { text-align: center; margin-bottom: 60px; opacity: 0; animation: fadeIn 1s forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
 
         h1 {
-            font-size: clamp(3.2rem, 12vw, 7.5rem); font-weight: 900; text-transform: uppercase;
-            letter-spacing: -4px; line-height: 0.9; position: relative; display: inline-block;
+            font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; text-transform: uppercase;
+            letter-spacing: -3px; line-height: 0.9; position: relative; display: inline-block;
             background: linear-gradient(to bottom, #fff 40%, var(--secondary) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.3));
@@ -66,64 +69,73 @@
         }
         @keyframes pulse-dot { 0% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.7; } }
 
-        .tagline { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 8px; margin-top: 20px; font-weight: 700; color: var(--accent); }
+        .tagline { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; margin-top: 15px; font-weight: 700; color: var(--accent); }
 
+        /* --- PLAYER --- */
         .player-card {
             background: var(--glass); border: 2px solid var(--border-glass);
             backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-            padding: 50px 30px; border-radius: 50px; width: 100%; max-width: 580px; text-align: center;
-            box-shadow: 0 40px 100px var(--card-shadow); margin-bottom: 80px; position: relative;
+            padding: 50px 30px; border-radius: 40px; width: 100%; max-width: 550px; text-align: center;
+            box-shadow: 0 40px 100px var(--card-shadow); margin-bottom: 60px; position: relative;
         }
-        .player-card.playing { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 60px var(--glow-player), 0 40px 100px var(--card-shadow); }
+        .player-card.playing { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 50px var(--glow-player), 0 40px 100px var(--card-shadow); }
 
-        #track-title { font-weight: 900; font-size: 2.1rem; display: block; margin-bottom: 8px; color: var(--text-main); transition: opacity 0.3s; }
-        #track-artist { font-size: 1rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 5px; font-weight: 700; transition: opacity 0.3s; }
+        .now-playing { min-height: 110px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        #track-title { font-weight: 900; font-size: clamp(1.4rem, 5vw, 2rem); display: block; margin-bottom: 8px; color: var(--text-main); transition: opacity 0.3s; line-height: 1.2; }
+        #track-artist { font-size: 0.9rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; transition: opacity 0.3s; }
 
-        .visualizer-inline { display: inline-flex; gap: 3px; height: 18px; margin-left: 10px; align-items: flex-end; }
-        .vis-bar { width: 3px; background: var(--secondary); border-radius: 2px; height: 5px; }
-        .playing .vis-bar { animation: barBounce 1s infinite alternate; }
-        .playing .vis-bar:nth-child(1) { animation-delay: 0.1s; }
-        .playing .vis-bar:nth-child(2) { animation-delay: 0.3s; }
-        .playing .vis-bar:nth-child(3) { animation-delay: 0.5s; }
-        @keyframes barBounce { 0% { height: 5px; } 100% { height: 18px; } }
+        .visualizer-inline { display: inline-flex; gap: 3px; height: 16px; margin-left: 10px; align-items: flex-end; }
+        .vis-bar { width: 3px; background: var(--secondary); border-radius: 2px; height: 4px; }
+        .playing .vis-bar { animation: barBounce 0.8s infinite alternate; }
+        .playing .vis-bar:nth-child(2) { animation-delay: 0.2s; }
+        .playing .vis-bar:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes barBounce { 0% { height: 4px; } 100% { height: 16px; } }
 
-        .play-outer { position: relative; width: 130px; height: 130px; margin: 30px auto; }
+        .play-outer { position: relative; width: 120px; height: 120px; margin: 25px auto; }
         .glow-ring {
-            position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border-radius: 50%;
+            position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; border-radius: 50%;
             background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
             opacity: 0; transition: 0.5s;
         }
-        .playing .glow-ring { opacity: 0.6; animation: spinOrbit 3s linear infinite; filter: blur(12px); }
+        .playing .glow-ring { opacity: 0.5; animation: spinOrbit 4s linear infinite; filter: blur(10px); }
         @keyframes spinOrbit { 100% { transform: rotate(360deg); } }
 
         #playBtn {
             width: 100%; height: 100%; border-radius: 50%; border: none;
             background: var(--text-main); color: var(--bg-dark);
-            font-size: 2.8rem; cursor: pointer; position: relative; z-index: 10;
+            font-size: 2.5rem; cursor: pointer; position: relative; z-index: 10;
         }
         .playing #playBtn { background: var(--accent); color: #fff; }
 
-        .vol-wrap { display: flex; align-items: center; gap: 15px; width: 70%; margin: 0 auto; opacity: 0.4; }
+        .vol-wrap { display: flex; align-items: center; gap: 12px; width: 200px; margin: 10px auto 0; opacity: 0.5; }
+        .vol-wrap:hover { opacity: 1; }
         input[type=range] { flex: 1; cursor: pointer; accent-color: var(--secondary); height: 4px; }
 
+        /* --- GRID --- */
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;
-            width: 100%; max-width: 1200px; padding-bottom: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+            width: 100%; max-width: 1100px; padding-bottom: 40px;
         }
-        .card { background: var(--glass); border: 1px solid var(--border-glass); padding: 40px; border-radius: 40px; }
-        .card h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; color: var(--secondary); letter-spacing: 2px; display: flex; align-items: center; gap: 12px; }
-        .big-text { font-size: 1.8rem; font-weight: 900; display: block; color: var(--text-main); margin: 10px 0; }
-        .accent-text { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+        .card { background: var(--glass); border: 1px solid var(--border-glass); padding: 35px; border-radius: 35px; }
+        .card h2 { font-size: 1rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; color: var(--secondary); letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
+        .big-text { font-size: 1.6rem; font-weight: 900; display: block; color: var(--text-main); margin: 5px 0; line-height: 1.2; }
+        .accent-text { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
-        .soc-row { display: flex; gap: 15px; margin-top: 30px; }
-        .soc-item { width: 55px; height: 55px; border-radius: 15px; background: var(--text-main); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); text-decoration: none; font-size: 1.6rem; }
+        .soc-row { display: flex; gap: 12px; margin-top: 25px; }
+        .soc-item { width: 50px; height: 50px; border-radius: 12px; background: var(--text-main); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); text-decoration: none; font-size: 1.4rem; }
+        .soc-item:hover { transform: scale(1.1); background: var(--secondary); }
 
-        .theme-toggle { position: fixed; top: 25px; right: 25px; z-index: 1000; background: var(--glass); border: 1px solid var(--border-glass); width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(12px); }
+        /* --- UI PRVKY --- */
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--glass); border: 1px solid var(--border-glass); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; }
-        footer p { font-size: 0.75rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+        footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; }
+        footer p { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-        @media (max-width: 768px) { h1 { font-size: 3.2rem; } .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            .main-wrapper { padding: 40px 15px; }
+            h1 { font-size: 3.5rem; }
+            .player-card { padding: 40px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -137,13 +149,13 @@
     <div class="main-wrapper">
         <header>
             <h1>MOVEIT RÁDIO<span class="live-dot"></span></h1>
-            <p class="tagline">Tvoje vlna energie</p>
+            <p class="tagline">Tvoja vlna energie</p>
         </header>
 
         <section class="player-card" id="playerContainer">
             <div class="now-playing">
                 <span id="track-artist">MOVEIT RÁDIO</span>
-                <span id="track-title">Pripravený na pohyb<div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div></span>
+                <div id="track-title">PRIPRAVENÝ NA POHYB<div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div></div>
             </div>
 
             <div class="play-outer">
@@ -163,14 +175,14 @@
                 <h2><i class="fas fa-compact-disc"></i> PROGRAM</h2>
                 <p class="accent-text">Každý piatok:</p>
                 <span class="big-text">Večerná zábava s DJ Filipom</span>
-                <p style="opacity: 0.6; font-size: 0.9rem;">20:00 — 22:00 | LIVE DANCE MIX</p>
+                <p style="opacity: 0.6; font-size: 0.85rem; margin-top: 5px;">20:00 — 22:00 | LIVE DANCE MIX</p>
             </div>
 
             <div class="card">
                 <h2><i class="fas fa-bolt"></i> EXTRA SHOW</h2>
                 <p class="accent-text">Oficiálne vysielanie:</p>
                 <span class="big-text">Denná zábava s DJ Filipom</span>
-                <p style="opacity: 0.6; font-size: 0.9rem;">Podľa aktuálnej nálady a energie</p>
+                <p style="opacity: 0.6; font-size: 0.85rem; margin-top: 5px;">Podľa aktuálnej nálady a energie</p>
             </div>
 
             <div class="card">
@@ -199,6 +211,7 @@
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         
+        // Dark/Light Mode
         themeToggle.addEventListener('click', () => {
             if (document.body.getAttribute('data-theme') === 'light') {
                 document.body.removeAttribute('data-theme');
@@ -209,51 +222,53 @@
             }
         });
 
+        // Ovládání přehrávače
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.src = "https://stream.zeno.fm/jkrusgbmbtcvv";
-                audio.play();
+                audio.src = "https://stream.zeno.fm/jkrusgbmbtcvv"; // Refresh streamu pro odstranění delaye
+                audio.play().catch(error => console.log("Prehrávanie zlyhalo:", error));
                 playIcon.className = 'fas fa-pause';
                 playerContainer.classList.add('playing');
-                trackTitle.innerHTML = "Načítavam...<div class='visualizer-inline'><div class='vis-bar'></div><div class='vis-bar'></div><div class='vis-bar'></div></div>";
             } else {
                 audio.pause();
-                audio.src = ""; 
+                audio.src = ""; // Stop bufferování
                 playIcon.className = 'fas fa-play';
                 playerContainer.classList.remove('playing');
-                trackTitle.innerHTML = "Zastavené<div class='visualizer-inline'><div class='vis-bar'></div><div class='vis-bar'></div><div class='vis-bar'></div></div>";
             }
         });
 
+        // Hlasitost
         document.getElementById('volume').addEventListener('input', (e) => audio.volume = e.target.value);
 
-        let currentTitle = "";
-        let currentArtist = "";
+        // Metadata (Názvy skladeb)
+        let currentFullTitle = "";
 
         function subscribeToMetadata() {
             const eventSource = new EventSource('https://api.zeno.fm/mounts/metadata/subscribe/jkrusgbmbtcvv');
             eventSource.onmessage = (event) => {
                 const data = JSON.parse(event.data);
-                if (data.streamTitle) {
-                    const parts = data.streamTitle.split(' - ');
-                    let artist = (parts[0] || "MOVEIT RÁDIO").toUpperCase();
-                    let title = (parts[1] || data.streamTitle).toUpperCase();
+                if (data.streamTitle && data.streamTitle !== currentFullTitle) {
+                    currentFullTitle = data.streamTitle;
                     
-                    if (artist !== currentArtist || title !== currentTitle) {
-                        trackTitle.style.opacity = 0;
-                        trackArtist.style.opacity = 0;
-                        
-                        setTimeout(() => {
-                            trackArtist.innerText = artist;
-                            trackTitle.innerHTML = title + "<div class='visualizer-inline'><div class='vis-bar'></div><div class='vis-bar'></div><div class='vis-bar'></div></div>";
-                            trackTitle.style.opacity = 1;
-                            trackArtist.style.opacity = 1;
-                        }, 300);
-                        
-                        currentArtist = artist;
-                        currentTitle = title;
-                    }
+                    const parts = data.streamTitle.split(' - ');
+                    const artist = (parts[0] || "MOVEIT RÁDIO").toUpperCase();
+                    const title = (parts[1] || parts[0]).toUpperCase();
+                    
+                    trackTitle.style.opacity = 0;
+                    trackArtist.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        trackArtist.innerText = artist;
+                        trackTitle.innerHTML = title + `<div class="visualizer-inline"><div class="vis-bar"></div><div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div>`;
+                        trackTitle.style.opacity = 1;
+                        trackArtist.style.opacity = 1;
+                    }, 300);
                 }
+            };
+            eventSource.onerror = () => {
+                console.log("Metadata reconnecting...");
+                eventSource.close();
+                setTimeout(subscribeToMetadata, 5000);
             };
         }
         subscribeToMetadata();
