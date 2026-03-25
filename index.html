@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Moveit Rádio | Žij hudbou 2026</title>
+    <meta name="description" content="Počúvaj Moveit Rádio online na moveitradio.sk. Exkluzívne live dance mixy, DJ Filip a tvoja denná dávka energie.">
+    <meta name="keywords" content="Moveit Rádio, moveitradio.sk, online rádio, dance music, DJ Filip, live stream rádio">
+    <link rel="canonical" href="https://moveitradio.sk/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RadioStation",
+      "name": "Moveit Rádio",
+      "url": "https://moveitradio.sk/",
+      "genre": ["Dance", "Electronic"]
+    }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -222,16 +236,16 @@
             }
         });
 
-        // Ovládání přehrávače
+        // Ovládanie přehrávače
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.src = "https://stream.zeno.fm/jkrusgbmbtcvv"; // Refresh streamu pro odstranění delaye
+                audio.src = "https://stream.zeno.fm/jkrusgbmbtcvv"; 
                 audio.play().catch(error => console.log("Prehrávanie zlyhalo:", error));
                 playIcon.className = 'fas fa-pause';
                 playerContainer.classList.add('playing');
             } else {
                 audio.pause();
-                audio.src = ""; // Stop bufferování
+                audio.src = ""; 
                 playIcon.className = 'fas fa-play';
                 playerContainer.classList.remove('playing');
             }
@@ -259,14 +273,13 @@
                     
                     setTimeout(() => {
                         trackArtist.innerText = artist;
-                        trackTitle.innerHTML = title + `<div class="visualizer-inline"><div class="vis-bar"></div><div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div>`;
+                        trackTitle.innerHTML = title + `<div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div>`;
                         trackTitle.style.opacity = 1;
                         trackArtist.style.opacity = 1;
                     }, 300);
                 }
             };
             eventSource.onerror = () => {
-                console.log("Metadata reconnecting...");
                 eventSource.close();
                 setTimeout(subscribeToMetadata, 5000);
             };
