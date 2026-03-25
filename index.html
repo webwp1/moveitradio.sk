@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Moveit Rádio | Žij hudbou 2026</title>
-    <meta name="description" content="Počúvaj Moveit Rádio online na moveitradio.sk. Exkluzívne live dance mixy, DJ Filip a tvoja denná dávka energie.">
-    <meta name="keywords" content="Moveit Rádio, moveitradio.sk, online rádio, dance music, DJ Filip, live stream rádio">
-    <link rel="canonical" href="https://moveitradio.sk/">
+    <title>Moveit Rádio | Žij hudbou 2026 – Tvoja online vlna energie</title>
+    
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1iuStY2ljPhULgoZQXEHAAYlBAW-3tneg">
+
+    <meta name="description" content="Moveit Rádio – tvoja vlna energie! Počúvaj najlepšie tanečné mixy, sleduj live show s DJ Filipom a uži si poriadnu dávku hudby online 24/7.">
+    <meta name="keywords" content="Moveit Rádio, online rádio, tanečná hudba, DJ Filip, live stream rádio, slovenské rádio, dance mix">
+    <meta name="author" content="Moveit Rádio">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Moveit Rádio | Žij hudbou 2026">
+    <meta property="og:description" content="Tvoja vlna energie! Počúvaj najlepšie tanečné hity a live show s DJ Filipom.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1iuStY2ljPhULgoZQXEHAAYlBAW-3tneg"> 
+    <meta property="og:url" content="https://moveitradio.sk/">
 
     <script type="application/ld+json">
     {
@@ -15,7 +25,12 @@
       "@type": "RadioStation",
       "name": "Moveit Rádio",
       "url": "https://moveitradio.sk/",
-      "genre": ["Dance", "Electronic"]
+      "logo": "https://lh3.googleusercontent.com/d/1iuStY2ljPhULgoZQXEHAAYlBAW-3tneg",
+      "description": "Slovenská internetová rozhlasová stanica zameraná na tanečnú hudbu a live mixy.",
+      "sameAs": [
+        "https://www.instagram.com/moveitradio_sk",
+        "https://www.tiktok.com/@moveitradio_sk"
+      ]
     }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -52,7 +67,6 @@
             overflow-x: hidden;
         }
 
-        /* --- POZADÍ --- */
         .bg-animate {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background: radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
@@ -84,7 +98,6 @@
 
         .tagline { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; margin-top: 15px; font-weight: 700; color: var(--accent); }
 
-        /* --- PLAYER --- */
         .player-card {
             background: var(--glass); border: 2px solid var(--border-glass);
             backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
@@ -124,27 +137,18 @@
         .vol-wrap:hover { opacity: 1; }
         input[type=range] { flex: 1; cursor: pointer; accent-color: var(--secondary); height: 4px; }
 
-        /* --- GRID --- */
         .grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
-            width: 100%; max-width: 1100px; margin-bottom: 25px;
+            width: 100%; max-width: 1100px; padding-bottom: 40px;
         }
         .card { background: var(--glass); border: 1px solid var(--border-glass); padding: 35px; border-radius: 35px; }
         .card h2 { font-size: 1rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; color: var(--secondary); letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
         .big-text { font-size: 1.6rem; font-weight: 900; display: block; color: var(--text-main); margin: 5px 0; line-height: 1.2; }
         .accent-text { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* --- SPONZOR SECTION --- */
-        .sponsor-section {
-            width: 100%; max-width: 1100px; margin-bottom: 40px;
-        }
-        .sponsor-card {
-            background: var(--glass); border: 1px solid var(--border-glass);
-            padding: 30px; border-radius: 35px; text-align: center;
-        }
-        .sponsor-link { display: inline-block; max-width: 400px; width: 100%; margin-top: 15px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .sponsor-link:hover { transform: scale(1.05); filter: brightness(1.1); }
-        .sponsor-img { width: 100%; height: auto; border-radius: 20px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .sponsor-section { width: 100%; max-width: 1100px; margin-bottom: 40px; }
+        .sponsor-card { background: var(--glass); border: 1px solid var(--border-glass); padding: 30px; border-radius: 35px; text-align: center; }
+        .sponsor-img { width: 100%; max-width: 450px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-top: 15px; display: inline-block; }
 
         .soc-row { display: flex; gap: 12px; margin-top: 25px; }
         .soc-item { width: 50px; height: 50px; border-radius: 12px; background: var(--text-main); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); text-decoration: none; font-size: 1.4rem; }
@@ -152,7 +156,7 @@
 
         .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--glass); border: 1px solid var(--border-glass); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); }
 
-        footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; width: 100%; }
+        footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; }
         footer p { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
         @media (max-width: 600px) {
@@ -184,12 +188,12 @@
 
             <div class="play-outer">
                 <div class="glow-ring"></div>
-                <button id="playBtn"><i class="fas fa-play" id="playIcon"></i></button>
+                <button id="playBtn" aria-label="Prehrať rádio"><i class="fas fa-play" id="playIcon"></i></button>
             </div>
 
             <div class="vol-wrap">
                 <i class="fas fa-volume-down"></i>
-                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8">
+                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Hlasitosť">
                 <i class="fas fa-volume-up"></i>
             </div>
         </section>
@@ -212,8 +216,8 @@
             <div class="card">
                 <h2><i class="fas fa-share-nodes"></i> SLEDUJ NÁS</h2>
                 <div class="soc-row">
-                    <a href="https://www.instagram.com/moveitradio_sk" class="soc-item" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@moveitradio_sk" class="soc-item" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/moveitradio_sk" class="soc-item" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@moveitradio_sk" class="soc-item" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -221,15 +225,15 @@
         <section class="sponsor-section">
             <div class="sponsor-card">
                 <h2><i class="fas fa-star"></i> OFICIÁLNY PARTNER</h2>
-                <a href="https://www.print-up.at/" target="_blank" class="sponsor-link">
-                    <img src="https://lh3.googleusercontent.com/d/1eR0l1OLGVqhNxwRYDLMouGSFq1HouRVa" alt="Print-Up.at" class="sponsor-img">
+                <a href="https://www.print-up.at/" target="_blank">
+                    <img src="https://lh3.googleusercontent.com/d/1eR0l1OLGVqhNxwRYDLMouGSFq1HouRVa" alt="Partner Print-Up.at" class="sponsor-img">
                 </a>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>POWERED BY <a href="https://sites.google.com/view/martin-weby/web" target="_blank" style="color:var(--secondary); text-decoration:none;">MARTIN</a> &copy; 2026</p>
+        <p>POWERED BY <a href="https://sites.google.com/view/martin-weby/web" target="_blank" style="color:var(--secondary); text-decoration:none;">MARTIN</a> © 2026</p>
     </footer>
 
     <audio id="radioAudio" src="https://stream.zeno.fm/jkrusgbmbtcvv" preload="none"></audio>
@@ -271,7 +275,6 @@
         document.getElementById('volume').addEventListener('input', (e) => audio.volume = e.target.value);
 
         let currentFullTitle = "";
-
         function subscribeToMetadata() {
             const eventSource = new EventSource('https://api.zeno.fm/mounts/metadata/subscribe/jkrusgbmbtcvv');
             eventSource.onmessage = (event) => {
@@ -281,8 +284,10 @@
                     const parts = data.streamTitle.split(' - ');
                     const artist = (parts[0] || "MOVEIT RÁDIO").toUpperCase();
                     const title = (parts[1] || parts[0]).toUpperCase();
+                    
                     trackTitle.style.opacity = 0;
                     trackArtist.style.opacity = 0;
+                    
                     setTimeout(() => {
                         trackArtist.innerText = artist;
                         trackTitle.innerHTML = title + `<div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div>`;
