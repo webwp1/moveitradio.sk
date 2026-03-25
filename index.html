@@ -128,12 +128,24 @@
         /* --- GRID --- */
         .grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
-            width: 100%; max-width: 1100px; padding-bottom: 40px;
+            width: 100%; max-width: 1100px; margin-bottom: 25px;
         }
         .card { background: var(--glass); border: 1px solid var(--border-glass); padding: 35px; border-radius: 35px; }
         .card h2 { font-size: 1rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; color: var(--secondary); letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
         .big-text { font-size: 1.6rem; font-weight: 900; display: block; color: var(--text-main); margin: 5px 0; line-height: 1.2; }
         .accent-text { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+
+        /* --- SPONZOR SECTION (PRED FOOTEROM) --- */
+        .sponsor-section {
+            width: 100%; max-width: 1100px; margin-bottom: 40px;
+        }
+        .sponsor-card {
+            background: var(--glass); border: 1px solid var(--border-glass);
+            padding: 25px; border-radius: 35px; text-align: center;
+        }
+        .sponsor-link { display: inline-block; max-width: 300px; width: 100%; margin-top: 15px; transition: 0.3s; }
+        .sponsor-link:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .sponsor-img { width: 100%; height: auto; border-radius: 15px; display: block; }
 
         .soc-row { display: flex; gap: 12px; margin-top: 25px; }
         .soc-item { width: 50px; height: 50px; border-radius: 12px; background: var(--text-main); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); text-decoration: none; font-size: 1.4rem; }
@@ -142,7 +154,7 @@
         /* --- UI PRVKY --- */
         .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--glass); border: 1px solid var(--border-glass); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); }
 
-        footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; }
+        footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-glass); margin-top: auto; width: 100%; }
         footer p { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
         @media (max-width: 600px) {
@@ -207,6 +219,15 @@
                 </div>
             </div>
         </div>
+
+        <section class="sponsor-section">
+            <div class="sponsor-card">
+                <h2><i class="fas fa-star"></i> OFICIÁLNY SPONZOR</h2>
+                <a href="https://www.print-up.at/" target="_blank" class="sponsor-link">
+                    <img src="sponzor 1.png" alt="Print-Up.at" class="sponsor-img">
+                </a>
+            </div>
+        </section>
     </div>
 
     <footer>
@@ -225,7 +246,6 @@
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         
-        // Dark/Light Mode
         themeToggle.addEventListener('click', () => {
             if (document.body.getAttribute('data-theme') === 'light') {
                 document.body.removeAttribute('data-theme');
@@ -236,7 +256,6 @@
             }
         });
 
-        // Ovládanie přehrávače
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.src = "https://stream.zeno.fm/jkrusgbmbtcvv"; 
@@ -251,10 +270,8 @@
             }
         });
 
-        // Hlasitost
         document.getElementById('volume').addEventListener('input', (e) => audio.volume = e.target.value);
 
-        // Metadata (Názvy skladeb)
         let currentFullTitle = "";
 
         function subscribeToMetadata() {
@@ -263,14 +280,11 @@
                 const data = JSON.parse(event.data);
                 if (data.streamTitle && data.streamTitle !== currentFullTitle) {
                     currentFullTitle = data.streamTitle;
-                    
                     const parts = data.streamTitle.split(' - ');
                     const artist = (parts[0] || "MOVEIT RÁDIO").toUpperCase();
                     const title = (parts[1] || parts[0]).toUpperCase();
-                    
                     trackTitle.style.opacity = 0;
                     trackArtist.style.opacity = 0;
-                    
                     setTimeout(() => {
                         trackArtist.innerText = artist;
                         trackTitle.innerHTML = title + `<div class="visualizer-inline"><div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div></div>`;
