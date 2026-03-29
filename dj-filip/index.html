@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>DJ Filip | Moveit Rádio 2026</title>
+    <meta name="description" content="Profil DJ Filipa na Moveit Rádiu. Informácie o moderátorovi, setoch a hudobnom svete.">
+    <meta name="keywords" content="DJ Filip, Moveit Radio, radio, DJ, hudba, slovenské rádio">
+    <meta name="author" content="MARTIN">
+    
+    <meta property="og:title" content="DJ Filip | Moveit Rádio 2026">
+    <meta property="og:description" content="Spoznaj DJ Filipa a jeho svet hudby na Moveit Rádiu.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1iuStY2ljPhULgoZQXEHAAYlBAW-3tneg">
+
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1iuStY2ljPhULgoZQXEHAAYlBAW-3tneg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1; 
+            --secondary: #06b6d4; 
+            --accent: #f43f5e; 
+            --bg-dark: #020617; 
+            --text-main: #f8fafc;
+            --glass: rgba(15, 23, 42, 0.6);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.6);
+            --nav-text: #f8fafc;
+            --footer-text: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f1f5f9;
+            --text-main: #0f172a;
+            --glass: rgba(255, 255, 255, 0.8);
+            --border-glass: rgba(15, 23, 42, 0.08);
+            --card-shadow: rgba(0, 0, 0, 0.05);
+            --nav-text: #0f172a;
+            --footer-text: rgba(15, 23, 42, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.4s, color 0.4s, border-color 0.4s; }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .top-nav {
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .top-nav a {
+            color: var(--nav-text);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center; gap: 8px;
+        }
+
+        .top-nav a:hover, .top-nav a.active { color: var(--secondary); }
+
+        .bg-animate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            background: radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
+                        radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.15), transparent 40%);
+            animation: pulseBg 15s ease-in-out infinite alternate;
+        }
+        @keyframes pulseBg { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+        .main-wrapper { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+
+        .work-card {
+            background: var(--glass);
+            border: 2px solid var(--border-glass);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 60px 40px;
+            border-radius: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 40px 100px var(--card-shadow);
+        }
+
+        .icon-pulse {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: pulseIcon 2.5s infinite;
+        }
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+        }
+
+        .info-text { font-size: 1.2rem; font-weight: 600; color: var(--text-main); opacity: 0.9; margin-bottom: 35px; }
+
+        .back-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border: 1px solid var(--border-glass);
+            padding: 12px 35px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .back-link:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-3px); }
+
+        .theme-toggle { 
+            position: fixed; top: 80px; right: 20px; z-index: 1000; 
+            background: var(--glass); border: 1px solid var(--border-glass); 
+            width: 45px; height: 45px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; 
+            backdrop-filter: blur(10px); 
+        }
+
+        footer { 
+            padding: 30px; 
+            text-align: center; 
+            border-top: 1px solid var(--border-glass); 
+            margin-top: auto;
+        }
+        footer p { 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            color: var(--footer-text); 
+        }
+
+        @media (max-width: 600px) { .theme-toggle { top: 75px; right: 10px; } }
+    </style>
+</head>
+<body id="mainBody">
+
+    <nav class="top-nav">
+        <a href="../"><i class="fas fa-home"></i> Domov</a>
+        <a href="./" class="active"><i class="fas fa-headphones"></i> DJ Filip</a>
+    </nav>
+
+    <div class="bg-animate"></div>
+
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="work-card">
+            <div class="status-badge">Profil</div>
+            <div class="icon-pulse"><i class="fas fa-user-circle"></i></div>
+            <h1>DJ FILIP</h1>
+            <p class="info-text">Tu budú informácie o mne.</p>
+            <a href="../" class="back-link">Späť na rádio</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>POWERED BY <a href="https://sites.google.com/view/martin-weby/web" target="_blank" style="color:var(--secondary); text-decoration:none;">MARTIN</a> © 2026</p>
+    </footer>
+
+    <script>
+        const body = document.getElementById('mainBody');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        const savedTheme = localStorage.getItem('radioTheme') || 'dark';
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('radioTheme', newTheme);
+            applyTheme(newTheme);
+        });
+    </script>
+</body>
+</html>
